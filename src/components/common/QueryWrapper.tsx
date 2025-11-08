@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react';
+import { LoadingSpinner } from './LoadingSpinner';
+import { ErrorMessage } from './ErrorMessage';
+import { EmptyState } from './EmptyState';
 
 interface QueryWrapperProps {
   loading: boolean;
@@ -7,6 +10,8 @@ interface QueryWrapperProps {
   children: ReactNode;
   loadingComponent?: ReactNode;
   errorComponent?: ReactNode;
+  emptyMessage?: string;
+  onRetry?: () => void;
 }
 
 export const QueryWrapper = ({
@@ -16,21 +21,19 @@ export const QueryWrapper = ({
   children,
   loadingComponent,
   errorComponent,
+  emptyMessage,
+  onRetry,
 }: QueryWrapperProps) => {
   if (loading) {
-    return loadingComponent || <div className="loading">Loading...</div>;
+    return <>{loadingComponent || <LoadingSpinner />}</>;
   }
 
   if (error) {
-    return errorComponent || (
-      <div className="error">
-        <p>Error: {error.message}</p>
-      </div>
-    );
+    return <>{errorComponent || <ErrorMessage message={error.message} onRetry={onRetry} />}</>;
   }
 
   if (!data) {
-    return <div className="no-data">No data available</div>;
+    return <EmptyState message={emptyMessage} />;
   }
 
   return <>{children}</>;
