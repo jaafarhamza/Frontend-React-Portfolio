@@ -138,7 +138,29 @@ export const apolloClient = new ApolloClient({
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
-        fields: {},
+        fields: {
+          projects: {
+            merge: false,
+          },
+          skills: {
+            merge: false,
+          },
+          experiences: {
+            merge: false,
+          },
+        },
+      },
+      Project: {
+        keyFields: ['id'],
+      },
+      Skill: {
+        keyFields: ['id'],
+      },
+      Experience: {
+        keyFields: ['id'],
+      },
+      Profile: {
+        keyFields: ['id'],
       },
     },
   }),
