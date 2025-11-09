@@ -5,3 +5,5 @@ export { LoadingSpinner } from './LoadingSpinner';
 export { LoadingSkeleton, ProfileSkeleton, ProjectSkeleton } from './LoadingSkeleton';
 export { ErrorMessage } from './ErrorMessage';
 export { EmptyState } from './EmptyState';
+export { DevBackground } from './DevBackground';
+export { DevCursor } from './DevCursor';

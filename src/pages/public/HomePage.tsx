@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
 import { useProfile } from "@/hooks/useProfile";
 import { useSkills } from "@/hooks/useSkills";
-import { LoadingSpinner } from "@/components/common";
+import { LoadingSpinner, DevBackground, DevCursor } from "@/components/common";
+import { SEOHead, StructuredData } from "@/components/layout";
 
 const HomePage = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const { data, loading } = useProfile();
   const { data: skillsData, loading: skillsLoading } = useSkills();
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const profile = data?.profile || {
     fullName: "John Doe",
@@ -43,40 +34,16 @@ const HomePage = () => {
   if (loading || skillsLoading) return <LoadingSpinner />;
 
   return (
-    <div className="dev-cursor min-h-screen bg-black relative overflow-hidden">
-      {/* Custom Cursor */}
-      <div
-        className="pointer-events-none fixed w-6 h-6 z-50 mix-blend-difference"
-        style={{ left: mousePos.x - 12, top: mousePos.y - 12 }}
-      >
-        <div className="w-full h-full border-2 border-green-400 rounded-full animate-pulse-ring"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full"></div>
-      </div>
-
-      {/* Matrix Rain Background */}
-      <div className="absolute inset-0 opacity-10">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-green-400 font-mono text-xs animate-matrix-rain"
-            style={{
-              left: `${i * 5}%`,
-              animationDelay: `${i * 0.3}s`,
-              animationDuration: `${5 + i * 0.5}s`
-            }}
-          >
-            {"01".repeat(50)}
-          </div>
-        ))}
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
-
-      {/* Scan Line */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="w-full h-1 bg-green-400/30 animate-scan-line"></div>
-      </div>
+    <>
+      <SEOHead
+        title={`${profile.fullName} - ${profile.title} | Portfolio`}
+        description={profile.bio}
+        keywords="portfolio, web developer, full stack developer, react, typescript, javascript"
+      />
+      <StructuredData type="Person" />
+      <div className="dev-cursor min-h-screen bg-black relative overflow-hidden pt-20">
+      <DevCursor />
+      <DevBackground />
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 min-h-screen flex items-center">
@@ -227,6 +194,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

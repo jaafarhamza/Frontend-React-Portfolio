@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSkills } from "@/hooks/useSkills";
-import { LoadingSpinner } from "@/components/common";
+import { LoadingSpinner, DevBackground, DevCursor } from "@/components/common";
+import { SEOHead } from "@/components/layout";
 
 const SkillsPage = () => {
   const { data, loading } = useSkills();
@@ -16,8 +17,15 @@ const SkillsPage = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+    <>
+      <SEOHead
+        title="Skills - Portfolio | Technical Expertise"
+        description="Comprehensive overview of my technical skills including React, TypeScript, Node.js, AWS, and modern web development technologies with proficiency levels."
+        keywords="skills, technical skills, react, typescript, node.js, javascript, web development, programming languages"
+      />
+      <div className="dev-cursor min-h-screen bg-black relative overflow-hidden pt-20">
+      <DevCursor />
+      <DevBackground />
       
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-7xl mx-auto">
@@ -82,6 +90,7 @@ const SkillsPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

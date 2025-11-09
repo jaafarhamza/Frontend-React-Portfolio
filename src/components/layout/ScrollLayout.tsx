@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 interface ScrollLayoutProps {
   children: React.ReactNode;
@@ -50,16 +52,20 @@ export const ScrollLayout = ({ children }: ScrollLayoutProps) => {
   }, [location.pathname]);
 
   return (
-    <div>
-      {Array.isArray(children) ? children.map((child, index) => (
-        <div
-          key={index}
-          ref={(el) => { if (el) sectionsRef.current[index] = el; }}
-          data-route={child.props["data-route"]}
-        >
-          {child}
-        </div>
-      )) : children}
-    </div>
+    <>
+      <Header />
+      <main>
+        {Array.isArray(children) ? children.map((child, index) => (
+          <div
+            key={index}
+            ref={(el) => { if (el) sectionsRef.current[index] = el; }}
+            data-route={child.props["data-route"]}
+          >
+            {child}
+          </div>
+        )) : children}
+      </main>
+      <Footer />
+    </>
   );
 };

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useProjects } from "@/hooks/useProjects";
 import { useSkills } from "@/hooks/useSkills";
 import { ProjectCard } from "@/components/features/ProjectCard";
-import { LoadingSpinner } from "@/components/common";
+import { LoadingSpinner, DevBackground, DevCursor } from "@/components/common";
+import { SEOHead } from "@/components/layout";
 import type { Project } from "@/types/portfolio.types";
 
 const ProjectsPage = () => {
@@ -20,8 +21,15 @@ const ProjectsPage = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+    <>
+      <SEOHead
+        title="Projects - Portfolio | Web Development Showcase"
+        description="Explore my portfolio of web development projects featuring React, TypeScript, Node.js, and modern technologies. View live demos and source code."
+        keywords="projects, portfolio, web development, react projects, typescript projects, open source"
+      />
+      <div className="dev-cursor min-h-screen bg-black relative overflow-hidden pt-20">
+      <DevCursor />
+      <DevBackground />
       
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-7xl mx-auto">
@@ -79,6 +87,7 @@ const ProjectsPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
