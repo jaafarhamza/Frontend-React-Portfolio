@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { ScrollLayout } from "@/components/layout/ScrollLayout";
 
 // Public Pages
 import HomePage from "@/pages/public/HomePage";
@@ -21,22 +22,50 @@ import NotFoundPage from "@/pages/NotFoundPage";
 
 // Create router configuration
 export const router = createBrowserRouter([
-  // Public Routes
+  // Public Routes - Scroll Layout
   {
     path: "/",
-    element: <HomePage />,
+    element: (
+      <ScrollLayout>
+        <div data-route="/"><HomePage /></div>
+        <div data-route="/projects"><ProjectsPage /></div>
+        <div data-route="/skills"><SkillsPage /></div>
+        <div data-route="/experience"><ExperiencePage /></div>
+      </ScrollLayout>
+    ),
   },
   {
     path: "/projects",
-    element: <ProjectsPage />,
+    element: (
+      <ScrollLayout>
+        <div data-route="/"><HomePage /></div>
+        <div data-route="/projects"><ProjectsPage /></div>
+        <div data-route="/skills"><SkillsPage /></div>
+        <div data-route="/experience"><ExperiencePage /></div>
+      </ScrollLayout>
+    ),
   },
   {
     path: "/skills",
-    element: <SkillsPage />,
+    element: (
+      <ScrollLayout>
+        <div data-route="/"><HomePage /></div>
+        <div data-route="/projects"><ProjectsPage /></div>
+        <div data-route="/skills"><SkillsPage /></div>
+        <div data-route="/experience"><ExperiencePage /></div>
+      </ScrollLayout>
+    ),
   },
   {
     path: "/experience",
-    element: <ExperiencePage />,
+    element: (
+      <ScrollLayout>
+        <div data-route="/"><HomePage /></div>
+        <div data-route="/projects"><ProjectsPage /></div>
+        <div data-route="/skills"><SkillsPage /></div>
+        <div data-route="/experience"><ExperiencePage /></div>
+      </ScrollLayout>
+    ),
   },
 
   // Admin Routes
