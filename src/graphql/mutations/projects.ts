@@ -5,6 +5,7 @@ export const CREATE_PROJECT = gql`
     createProject(input: $input) {
       id
       title
+      slug
       description
       imageUrls
       liveUrl
@@ -23,6 +24,7 @@ export const UPDATE_PROJECT = gql`
     updateProject(id: $id, input: $input) {
       id
       title
+      slug
       description
       imageUrls
       liveUrl

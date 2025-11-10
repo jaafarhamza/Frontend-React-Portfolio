@@ -20,6 +20,7 @@ export const ProjectModal = ({ project, isOpen, onClose, onSuccess }: ProjectMod
 
   const [formData, setFormData] = useState({
     title: "",
+    slug: "",
     description: "",
     imageUrls: [""],
     liveUrl: "",
@@ -32,6 +33,7 @@ export const ProjectModal = ({ project, isOpen, onClose, onSuccess }: ProjectMod
     if (project) {
       setFormData({
         title: project.title || "",
+        slug: project.slug || "",
         description: project.description || "",
         imageUrls: project.imageUrls || [""],
         liveUrl: project.liveUrl || "",
@@ -42,6 +44,7 @@ export const ProjectModal = ({ project, isOpen, onClose, onSuccess }: ProjectMod
     } else {
       setFormData({
         title: "",
+        slug: "",
         description: "",
         imageUrls: [""],
         liveUrl: "",
@@ -121,17 +124,30 @@ export const ProjectModal = ({ project, isOpen, onClose, onSuccess }: ProjectMod
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-purple-300 mb-2">Title</label>
-              <input
-                type="text"
-                value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:border-purple-500"
-                required
-              />
-            </div>
+          <div>
+            <label className="block text-sm font-medium text-purple-300 mb-2">Title</label>
+            <input
+              type="text"
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              className="w-full px-4 py-3 bg-slate-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:border-purple-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-purple-300 mb-2">Slug (URL-friendly)</label>
+            <input
+              type="text"
+              value={formData.slug}
+              onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+              className="w-full px-4 py-3 bg-slate-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:border-purple-500"
+              placeholder="careflow-ehr"
+              required
+            />
+          </div>
+
+          <div className="grid md:grid-cols-1 gap-4">
             <div className="flex items-end">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input

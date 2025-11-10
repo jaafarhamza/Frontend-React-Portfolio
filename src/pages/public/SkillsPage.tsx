@@ -74,12 +74,12 @@ const SkillsPage = () => {
               >
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-white font-mono font-bold">{skill.name}</span>
-                  <span className="text-green-400 font-mono text-sm">{skill.level}%</span>
+                  <span className="text-green-400 font-mono text-sm">{skill.level}/5</span>
                 </div>
                 <div className="h-2 bg-gray-800 relative overflow-hidden">
                   <div
                     className="h-full bg-linear-to-r from-green-400 to-cyan-400 transition-all duration-1000"
-                    style={{ width: `${skill.level}%` }}
+                    style={{ width: `${((skill.level || 0) / 5) * 100}%` }}
                   >
                     <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
                   </div>
