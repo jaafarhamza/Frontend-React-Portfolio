@@ -8,13 +8,13 @@ const HomePage = () => {
   const { data: skillsData, loading: skillsLoading } = useSkills();
 
   const profile = data?.profile || {
-    fullName: "John Doe",
+    fullName: "Jaafar hamza",
     title: "Full Stack Developer",
     bio: "Crafting elegant code solutions. Building the future, one commit at a time.",
-    location: "San Francisco, CA",
-    email: "john.doe@example.com",
+    location: "Morocco",
+    email: "Jaafar.hamza711@gmail.com",
     phone: "",
-    avatarUrl: "https://via.placeholder.com/200",
+    avatarUrl: "https://i.imgur.com/XRov13y.jpeg",
     socialLinks: []
   };
 
@@ -139,14 +139,13 @@ const HomePage = () => {
               {/* Avatar */}
               <div className="flex justify-center mb-8">
                 <div className="relative group">
-                  <div className="w-52 h-65 rounded-xl border border-white bg-black/70 backdrop-blur-sm overflow-hidden" style={{ clipPath: 'polygon(0 0, calc(92% - 24px) 0, 100% 24px, 100% 100%, 0 100%)' }}>
+                  <div className="relative rounded-lg border-2 border-dashed border-red-400/50 bg-slate-900/30 p-4 group-hover:border-green-400 group-hover:border-solid transition-all duration-300">
                     <img 
                       src={profile.avatarUrl} 
                       alt={profile.fullName} 
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                      className="w-auto h-auto max-w-sm max-h-96 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
-                  <div className="absolute top-0 right-0 w-10 h-10 border-l-3 border-b border-white" style={{ clipPath: 'polygon(0 0, 100% 100%, 0 100%)' }}></div>
                 </div>
               </div>
 

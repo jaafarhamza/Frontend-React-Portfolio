@@ -13,6 +13,7 @@ import DashboardPage from "@/pages/admin/DashboardPage";
 import ProfileManagementPage from "@/pages/admin/ProfileManagementPage";
 import ProjectsManagementPage from "@/pages/admin/ProjectsManagementPage";
 import SkillsManagementPage from "@/pages/admin/SkillsManagementPage";
+import ExperienceManagementPage from "@/pages/admin/ExperienceManagementPage";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { env } from "@/config/env";
 // Test Pages
@@ -102,6 +103,14 @@ export const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <SkillsManagementPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/experience",
+    element: (
+      <ProtectedRoute>
+        <ExperienceManagementPage />
       </ProtectedRoute>
     ),
   },

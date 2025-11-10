@@ -66,7 +66,7 @@ const SkillsPage = () => {
           </div>
 
           {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {filteredSkills.map((skill) => (
               skill && <div
                 key={skill.id}
