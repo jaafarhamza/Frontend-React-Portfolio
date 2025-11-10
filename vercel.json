@@ -9,7 +9,7 @@
     }
   ],
   "env": {
-    "VITE_API_URL": "https://backend-graphql-portfolio.onrender.com",
+    "VITE_API_URL": "https://backend-graphql-portfolio.onrender.com/graphql",
     "VITE_ENV": "production",
     "VITE_ENCRYPTION_KEY": "your-secure-production-encryption-key-2025"
   }
